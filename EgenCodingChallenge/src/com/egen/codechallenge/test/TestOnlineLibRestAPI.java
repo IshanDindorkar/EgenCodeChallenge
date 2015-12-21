@@ -5,15 +5,20 @@
 package com.egen.codechallenge.test;
 
 import static org.junit.Assert.assertEquals;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.junit.Before;
 import org.junit.Test;
+
+import com.egen.codechallenge.application.OnlineLibApplication;
 
 /**
  * @author IshanD
@@ -22,6 +27,11 @@ import org.junit.Test;
 public class TestOnlineLibRestAPI {
 	
 	private final String BASE_URL = "http://localhost:4567";
+	
+	@Before
+	public void setup(){
+		OnlineLibApplication.main(null);
+	}
 	
 	@Test
 	public void testCreateUser(){
