@@ -57,11 +57,13 @@ public class OnlineLibApplication {
 		});
 		
 		get("/checkoutBook", (request,response) -> {
-			Book book = OnlineLibController.checkoutBook(request.queryParams("userId"), request.queryParams("bookId"));
-			if(book == null)
-				return "Either user or book doesn't exist!!!";	
-			else
-				return book;
+			int status = OnlineLibController.checkoutBook(request.queryParams("userId"), request.queryParams("bookId"));
+			switch(status){
+				case 1: return "Book with Id "+ request.queryParams("bookId") + " is issued to user with Id " + request.queryParams("userId");
+				case -1: return "Book is already checked out";
+				case 0: return "Either book or user does not exist in the system";
+			}
+			return null;
 		});
 	}
 

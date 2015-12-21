@@ -71,7 +71,7 @@ public class OnlineLibController {
 		return null;
 	}
 	
-	public static Book checkoutBook(String userId, String bookId){
+	public static int checkoutBook(String userId, String bookId){
 				
 		for(User user:registeredUsers){
 			if(user.getId().toString().equalsIgnoreCase(userId)){
@@ -79,12 +79,16 @@ public class OnlineLibController {
 					if(b.getId().toString().equalsIgnoreCase(bookId)){
 						if(b.getBorrower()==null){
 							b.setBorrower(user);
+							return 1;
 						}
-						return b;
+						else {
+							return -1;
+						}
+						
 					}
 				}
 			}
 		}
-		return null;
+		return 0;
 	}
 }
