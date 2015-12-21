@@ -30,7 +30,7 @@ public class OnlineLibApplication {
 			return OnlineLibController.getAllUsers();	
 		});
 		
-		post("/updateUser",(request,response) -> {
+		put("/updateUser",(request,response) -> {
 			if(String.valueOf(request.queryParams("gender")).equalsIgnoreCase("Male"))
 				OnlineLibController.updateUser(request.queryParams("id"), request.queryParams("firstName"), request.queryParams("lastName"), Integer.parseInt(request.queryParams("age")), User.Gender.MALE, request.queryParams("phoneNumber"), request.queryParams("zipCode"));
 			else

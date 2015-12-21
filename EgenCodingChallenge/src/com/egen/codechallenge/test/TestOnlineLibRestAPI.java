@@ -5,16 +5,20 @@
 package com.egen.codechallenge.test;
 
 import static org.junit.Assert.assertEquals;
+
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.junit.Before;
 import org.junit.Test;
+
 import com.egen.codechallenge.application.OnlineLibApplication;
 
 /**
@@ -24,11 +28,6 @@ import com.egen.codechallenge.application.OnlineLibApplication;
 public class TestOnlineLibRestAPI {
 	
 	private final String BASE_URL = "http://localhost:4567";
-	
-	@Before
-	public void setup(){
-		OnlineLibApplication.main(null);
-	}
 	
 	@Test
 	public void testCreateUser(){
@@ -46,7 +45,7 @@ public class TestOnlineLibRestAPI {
 	
 	@Test
 	public void testUpdateUser(){
-		HttpUriRequest request = new HttpPost(BASE_URL+"/updateUser?id=cbe47c52-9321-483b-8ada-f97c9f6fbc5f&firstName=ABC&lastName=DEF&age=45&gender=Female&phoneNumber=9926450869&zipCode=452007");
+		HttpUriRequest request = new HttpPut(BASE_URL+"/updateUser?id=752fb900-5b67-4f3a-9f3b-bf97ec847f5a&firstName=Mayur&lastName=Dindorkar&age=45&gender=Female&phoneNumber=9926450869&zipCode=452007");
 		assertCheck(request);
 	}
 	
